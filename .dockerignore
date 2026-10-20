@@ -1,0 +1,8 @@
+.git
+node_modules
+vendor
+cloudflared.exe
+*.log
+.env
+database/database.sqlite-journal
+.phpunit.result.cache
