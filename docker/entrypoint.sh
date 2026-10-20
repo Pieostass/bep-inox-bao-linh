@@ -22,19 +22,29 @@ mkdir -p /var/www/html/storage/framework/cache/data \
          /var/www/html/storage/app/public \
          /var/www/html/bootstrap/cache
 
-# Fix file permissions for www-data
-chown -R www-data:www-data /var/www/html/storage \
-                           /var/www/html/bootstrap/cache \
-                           /var/www/html/database
-chmod -R 775 /var/www/html/storage \
-             /var/www/html/bootstrap/cache \
-             /var/www/html/database
+# Ensure .env exists
+if [ ! -f /var/www/html/.env ]; then
+    echo "Creating .env file..."
+    cp /var/www/html/.env.example /var/www/html/.env 2>/dev/null || touch /var/www/html/.env
+fi
 
 # Ensure APP_KEY exists
 if [ -z "$APP_KEY" ]; then
-    echo "Generating application key..."
-    php artisan key:generate --force
+    if ! grep -q "APP_KEY=base64:" /var/www/html/.env 2>/dev/null; then
+        echo "Generating application key..."
+        php artisan key:generate --force
+    fi
 fi
+
+# Fix file permissions for www-data
+chown -R www-data:www-data /var/www/html/storage \
+                           /var/www/html/bootstrap/cache \
+                           /var/www/html/database \
+                           /var/www/html/.env
+chmod -R 775 /var/www/html/storage \
+             /var/www/html/bootstrap/cache \
+             /var/www/html/database
+chmod 664 /var/www/html/.env
 
 # Run database migrations and seeding
 echo "Running database migrations..."

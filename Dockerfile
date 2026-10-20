@@ -48,6 +48,10 @@ RUN tr -d '\r' < /entrypoint.sh > /entrypoint_fixed.sh \
 # Copy application files
 COPY . /var/www/html
 
+# Setup default .env and generate application key
+RUN cp .env.example .env \
+    && php artisan key:generate --force
+
 # Install PHP dependencies without dev packages
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
