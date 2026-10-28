@@ -38,8 +38,8 @@
                     <p>• <strong>Địa chỉ xưởng & Showroom:</strong> Số 15, Ngõ 419 Đường Lĩnh Nam, Phường Vĩnh Hưng, Hà Nội, Việt Nam.</p>
                     <p>• <strong>Mã số thuế:</strong> <span class="font-mono font-bold text-slate-900">0111524104</span></p>
                     <p>• <strong>Đại diện pháp luật:</strong> Ông Phạm Anh Ngọc (Giám đốc)</p>
-                    <p>• <strong>Hotline tư vấn báo giá:</strong> <a href="tel:0988666888" class="text-[#e11b22] font-black text-base">0988.666.888</a></p>
-                    <p>• <strong>Kỹ thuật & bảo hành:</strong> <a href="tel:0988666888" class="text-[#e11b22] font-bold">0988.666.888</a></p>
+                    <p>• <strong>Hotline tư vấn báo giá:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-black text-base">0985.202.432</a></p>
+                    <p>• <strong>Kỹ thuật & bảo hành:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-bold">0985.202.432</a></p>
                     <p>• <strong>Email liên hệ:</strong> <a href="mailto:bepbaolinh38@gmail.com" class="text-slate-900 font-semibold hover:underline">bepbaolinh38@gmail.com</a></p>
                     <p>• <strong>Giờ làm việc:</strong> 7:30 - 20:30 (Thứ 2 - Chủ Nhật, phục vụ kể cả ngày lễ)</p>
                     
@@ -81,13 +81,13 @@
                             </div>
                             <div>
                                 <span class="text-xs font-semibold text-slate-600 block">Hotline Kỹ Thuật & Báo Giá:</span>
-                                <span class="text-xl sm:text-2xl font-black text-[#e11b22]">0988.666.888</span>
+                                <span class="text-xl sm:text-2xl font-black text-[#e11b22]">0985.202.432</span>
                             </div>
                         </div>
                         <p class="text-xs text-slate-600">
                             Hỗ trợ giải đáp thông số kỹ thuật, hướng dẫn điện 3 pha / 1 pha và tư vấn chọn model phù hợp ngân sách.
                         </p>
-                        <a href="tel:0988666888" 
+                        <a href="tel:0985202432" 
                            class="w-full py-3 px-4 bg-[#e11b22] hover:bg-[#c6151c] text-white font-bold text-xs sm:text-sm uppercase rounded-lg transition-colors shadow text-center flex items-center justify-center space-x-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                             <span>BẤM ĐỂ GỌI HOTLINE NGAY</span>
@@ -105,13 +105,13 @@
                             </div>
                             <div>
                                 <span class="text-xs font-semibold text-slate-600 block">Chat Tư Vấn Qua Zalo:</span>
-                                <span class="text-xl sm:text-2xl font-black text-[#0068ff]">0988.666.888</span>
+                                <span class="text-xl sm:text-2xl font-black text-[#0068ff]">0985.202.432</span>
                             </div>
                         </div>
                         <p class="text-xs text-slate-600">
                             Gửi hình ảnh mặt bằng, nhận video vận hành thực tế và trao đổi bảng báo giá chi tiết trực tiếp qua Zalo.
                         </p>
-                        <a href="https://zalo.me/0988666888" 
+                        <a href="https://zalo.me/0985202432" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="w-full py-3 px-4 bg-[#0068ff] hover:bg-blue-700 text-white font-bold text-xs sm:text-sm uppercase rounded-lg transition-colors shadow text-center flex items-center justify-center space-x-2">

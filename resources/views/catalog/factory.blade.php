@@ -34,7 +34,7 @@
             <div class="text-xs sm:text-sm text-slate-700 space-y-1.5 leading-relaxed">
                 <p>• <strong>Địa chỉ xưởng:</strong> Số 15, Ngõ 419 Đường Lĩnh Nam, Phường Vĩnh Hưng, Hà Nội, Việt Nam.</p>
                 <p>• <strong>Thời gian mở cửa:</strong> 7:30 - 20:30 (Thứ 2 đến Chủ Nhật, phục vụ kể cả ngày lễ).</p>
-                <p>• <strong>Hotline đặt lịch xem máy:</strong> <a href="tel:0988666888" class="text-[#e11b22] font-black">0988.666.888</a></p>
+                <p>• <strong>Hotline đặt lịch xem máy:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-black">0985.202.432</a></p>
                 <p>• <strong>Chính sách chạy thử:</strong> Quý khách hàng có thể mang trực tiếp nguyên liệu thực phẩm (thịt, bột bánh, gạo...) đến xưởng để chạy thử máy thực tế trước khi quyết định mua hàng.</p>
             </div>
         </div>
@@ -98,8 +98,8 @@
                 <strong class="text-slate-900 text-sm block">Bạn muốn đến xem trực tiếp xưởng sản xuất tại Hà Nội?</strong>
                 <span class="text-xs text-slate-600">Địa chỉ: Số 15, Ngõ 419 Lĩnh Nam, Phường Vĩnh Hưng, Hà Nội</span>
             </div>
-            <a href="tel:0988666888" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors shrink-0">
-                Gọi Đặt Hẹn Xem Xưởng: 0988.666.888
+            <a href="tel:0985202432" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors shrink-0">
+                Gọi Đặt Hẹn Xem Xưởng: 0985.202.432
             </a>
         </div>
 

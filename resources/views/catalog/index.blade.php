@@ -8,10 +8,17 @@
     <!-- 1. Hero Promotional Banner (AI Background: Gia đình nấu ăn ấm cúng) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
         <div class="relative overflow-hidden rounded-2xl shadow-xl min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex items-center bg-slate-900">
-            <!-- AI Background Image -->
-            <img src="{{ asset('images/banner-family-cooking.jpg') }}" 
-                 alt="Gia đình hạnh phúc cùng nấu ăn bên bếp Bảo Linh" 
-                 class="absolute inset-0 w-full h-full object-cover object-right md:object-center">
+            <!-- AI Background Image (WebP, responsive; JPG fallback) -->
+            <picture>
+                <source type="image/webp"
+                        srcset="{{ asset('images/banner-family-cooking-mobile.webp') }} 800w, {{ asset('images/banner-family-cooking.webp') }} 1376w"
+                        sizes="(max-width: 1280px) 100vw, 1216px">
+                <img src="{{ asset('images/banner-family-cooking.jpg') }}" 
+                     alt="Gia đình hạnh phúc cùng nấu ăn bên bếp Bảo Linh" 
+                     width="1376" height="768"
+                     fetchpriority="high" decoding="async"
+                     class="absolute inset-0 w-full h-full object-cover object-right md:object-center">
+            </picture>
             
             <!-- Soft Gradient Overlay on Left to make text pop -->
             <div class="absolute inset-0 pointer-events-none" 

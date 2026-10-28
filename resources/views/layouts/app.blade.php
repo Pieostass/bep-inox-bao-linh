@@ -6,6 +6,24 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Công Ty TNHH Bếp Inox Bảo Linh - Thiết Bị Bếp Công Nghiệp & Máy Thực Phẩm')</title>
     <meta name="description" content="@yield('meta_description', 'Công ty TNHH Bếp Inox Bảo Linh chuyên cung cấp và gia công thiết bị bếp công nghiệp, lò nướng bánh, tủ nấu cơm, nồi nấu phở điện inox 304, máy thực phẩm chất lượng cao, bảo hành 12 tháng tận nơi.')">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook / Zalo -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:site_name" content="Bếp Inox Bảo Linh">
+    <meta property="og:title" content="@yield('title', 'Công Ty TNHH Bếp Inox Bảo Linh - Thiết Bị Bếp Công Nghiệp')">
+    <meta property="og:description" content="@yield('meta_description', 'Chuyên gia công & cung cấp thiết bị bếp công nghiệp inox 304, bảo hành 12 tháng tận nơi.')">
+    <meta property="og:image" content="@yield('og_image', asset('images/banner-family-cooking.jpg'))">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Công Ty TNHH Bếp Inox Bảo Linh')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Chuyên gia công & cung cấp thiết bị bếp công nghiệp inox 304.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('images/banner-family-cooking.jpg'))">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

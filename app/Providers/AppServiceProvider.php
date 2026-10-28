@@ -19,7 +19,13 @@ class AppServiceProvider extends ServiceProvider
      */
      public function boot(): void
      {
+         \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+
+         // Catch N+1 queries during development only
+         \Illuminate\Database\Eloquent\Model::preventLazyLoading(! $this->app->isProduction());
+
          if (
+             $this->app->isProduction() ||
              (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
              (isset($_SERVER['HTTP_HOST']) && (
                  str_contains($_SERVER['HTTP_HOST'], 'serveo') ||

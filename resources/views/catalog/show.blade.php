@@ -131,13 +131,13 @@
 
                 <!-- Call to actions: Hotline & Zalo & Quote (KHÔNG CÓ GIỎ HÀNG) -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <a href="tel:0988666888" 
+                    <a href="tel:0985202432" 
                        class="py-3 px-4 rounded-xl bg-[#e11b22] hover:bg-[#c6151c] text-white font-black text-sm text-center uppercase tracking-wide shadow transition-colors flex items-center justify-center space-x-2">
                         <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        <span>GỌI HOTLINE: 0988.666.888</span>
+                        <span>GỌI HOTLINE: 0985.202.432</span>
                     </a>
 
-                    <a href="https://zalo.me/0988666888" 
+                    <a href="https://zalo.me/0985202432" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="py-3 px-4 rounded-xl bg-[#0068ff] hover:bg-blue-700 text-white font-black text-sm text-center uppercase tracking-wide shadow transition-colors flex items-center justify-center space-x-2">
@@ -199,7 +199,7 @@
                         </table>
                     </div>
                 @else
-                    <p class="text-xs text-slate-500 italic">Vui lòng liên hệ hotline 0988.666.888 để nhận thông số kỹ thuật chi tiết.</p>
+                    <p class="text-xs text-slate-500 italic">Vui lòng liên hệ hotline 0985.202.432 để nhận thông số kỹ thuật chi tiết.</p>
                 @endif
             </div>
 

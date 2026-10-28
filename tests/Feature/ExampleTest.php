@@ -42,7 +42,7 @@ class ExampleTest extends TestCase
         $response->assertSee('THÔNG SỐ KỸ THUẬT');
         $response->assertSee('7338666888');
         $response->assertSee('MB Bank');
-        $response->assertSee('0988.666.888');
+        $response->assertSee('0985.202.432');
     }
 
     /**
@@ -53,7 +53,7 @@ class ExampleTest extends TestCase
         $this->get('/gioi-thieu')->assertStatus(200)->assertSee('CÔNG TY TNHH BẾP INOX BẢO LINH');
         $this->get('/xuong-san-xuat')->assertStatus(200)->assertSee('Số 15, Ngõ 419 Đường Lĩnh Nam');
         $this->get('/chinh-sach')->assertStatus(200)->assertSee('Bảo Hành 12 Tháng');
-        $this->get('/lien-he')->assertStatus(200)->assertSee('0988.666.888');
+        $this->get('/lien-he')->assertStatus(200)->assertSee('0985.202.432');
         $this->get('/tin-tuc')->assertStatus(200)->assertSee('TIN TỨC');
     }
 

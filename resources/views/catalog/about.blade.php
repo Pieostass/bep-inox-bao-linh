@@ -64,7 +64,7 @@
                 </div>
                 <div>
                     <span class="text-slate-500 block">Hotline kỹ thuật & tư vấn:</span>
-                    <a href="tel:0988666888" class="text-[#e11b22] font-black">0988.666.888</a>
+                    <a href="tel:0985202432" class="text-[#e11b22] font-black">0985.202.432</a>
                 </div>
             </div>
         </div>
@@ -114,8 +114,8 @@
                 <span class="text-xs text-slate-600">Liên hệ trực tiếp với Giám đốc và đội ngũ kỹ thuật Bếp Inox Bảo Linh</span>
             </div>
             <div class="flex items-center space-x-3">
-                <a href="tel:0988666888" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors">
-                    Hotline: 0988.666.888
+                <a href="tel:0985202432" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors">
+                    Hotline: 0985.202.432
                 </a>
                 <button type="button" 
                         onclick="openQuoteModal('', 'Tư vấn lắp đặt bếp / mở quán mới')" 

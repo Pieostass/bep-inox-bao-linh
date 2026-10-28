@@ -87,8 +87,8 @@
         <!-- Hotlines -->
         <div class="p-4 bg-red-50 rounded-xl border border-red-200 text-xs sm:text-sm text-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
             <span>Mọi thắc mắc về bảo hành hoặc sự cố kỹ thuật, vui lòng gọi đường dây nóng 24/7:</span>
-            <a href="tel:0988666888" class="text-[#e11b22] font-black text-base hover:underline shrink-0">
-                0988.666.888
+            <a href="tel:0985202432" class="text-[#e11b22] font-black text-base hover:underline shrink-0">
+                0985.202.432
             </a>
         </div>
 

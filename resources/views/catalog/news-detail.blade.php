@@ -55,7 +55,7 @@
                 Để đảm bảo độ bền tối ưu cho thiết bị inox và hệ thống nhiệt điện, người dùng nên thực hiện bảo dưỡng vệ sinh hàng ngày sau mỗi ca làm việc. Không sử dụng các búi sắt thô ráp chà xát mạnh vào mặt kính điều khiển hoặc các cảm biến nhiệt độ. Thường xuyên kiểm tra nguồn điện cấp và đường xả nước đáy nồi, van phao tự động.
             </p>
             <p>
-                Nếu có bất kỳ dấu hiệu bất thường nào về nhiệt độ hoặc hiện tượng rò rỉ điện, hãy ngắt ngay nguồn điện cấp và liên hệ với đội ngũ kỹ thuật của Công ty TNHH Bếp Inox Bảo Linh theo số hotline <strong class="text-[#e11b22]">0988.666.888</strong> để được hướng dẫn xử lý an toàn.
+                Nếu có bất kỳ dấu hiệu bất thường nào về nhiệt độ hoặc hiện tượng rò rỉ điện, hãy ngắt ngay nguồn điện cấp và liên hệ với đội ngũ kỹ thuật của Công ty TNHH Bếp Inox Bảo Linh theo số hotline <strong class="text-[#e11b22]">0985.202.432</strong> để được hướng dẫn xử lý an toàn.
             </p>
         </div>
 
@@ -66,8 +66,8 @@
                 <span class="text-xs text-slate-600">Bảo Linh cam kết tư vấn đúng công suất, tiết kiệm chi phí</span>
             </div>
             <div class="flex items-center space-x-3 shrink-0">
-                <a href="tel:0988666888" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors shadow">
-                    Hotline: 0988.666.888
+                <a href="tel:0985202432" class="px-5 py-2.5 bg-[#e11b22] text-white font-bold text-xs uppercase rounded-lg hover:bg-[#c6151c] transition-colors shadow">
+                    Hotline: 0985.202.432
                 </a>
                 <button type="button" 
                         onclick="openQuoteModal('', '{{ addslashes($article->title) }}')"

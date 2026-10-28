@@ -93,23 +93,23 @@
                     <div class="space-y-2 text-red-100">
                         <div>
                             <span>Tư vấn Miền Bắc:</span><br>
-                            <a href="tel:0988666888" class="font-bold text-white hover:underline text-sm">0988.666.888</a>
+                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
                             <span>Tư vấn Miền Trung:</span><br>
-                            <a href="tel:0988666888" class="font-bold text-white hover:underline text-sm">0988.666.888</a>
+                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
                             <span>Tư vấn Miền Nam:</span><br>
-                            <a href="tel:0988666888" class="font-bold text-white hover:underline text-sm">0988.666.888</a>
+                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
                             <span>Khách hàng mua sỉ / Dự án:</span><br>
-                            <a href="tel:0988666888" class="font-bold text-amber-300 hover:underline text-sm">0988.666.888</a>
+                            <a href="tel:0985202432" class="font-bold text-amber-300 hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
                             <span>Kỹ thuật & Bảo hành:</span><br>
-                            <a href="tel:0988666888" class="font-bold text-white hover:underline text-sm">0988.666.888</a>
+                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                     </div>
                 </div>

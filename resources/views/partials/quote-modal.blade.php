@@ -43,7 +43,7 @@
                             class="px-6 py-2.5 bg-slate-800 text-white rounded-lg text-xs font-bold hover:bg-slate-900 transition-colors uppercase">
                         Đóng cửa sổ
                     </button>
-                    <a href="https://zalo.me/0988666888" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://zalo.me/0985202432" target="_blank" rel="noopener noreferrer" 
                        style="background-color: #0068ff;"
                        class="px-6 py-2.5 text-white rounded-lg text-xs font-bold hover:brightness-105 transition-colors uppercase">
                         Nhắn Zalo Ngay
@@ -89,7 +89,7 @@
                                name="phone" 
                                id="quotePhone"
                                required 
-                               placeholder="VD: 0988.xxx.xxx" 
+                               placeholder="VD: 0985.xxx.xxx" 
                                class="w-full px-3.5 py-2.5 text-sm bg-white border border-slate-300 rounded-lg focus:border-[#e11b22] focus:outline-none focus:ring-1 focus:ring-[#e11b22] text-slate-800 font-medium transition-colors">
                     </div>
                 </div>
@@ -163,7 +163,7 @@
 
                 <!-- Hotline hỗ trợ trực tiếp -->
                 <div class="text-xs text-center text-slate-500 pt-2 border-t border-slate-100">
-                    Hoặc liên hệ Hotline kỹ thuật trực tiếp: <a href="tel:0988666888" class="text-[#e11b22] font-black hover:underline">0988.666.888</a>
+                    Hoặc liên hệ Hotline kỹ thuật trực tiếp: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a>
                 </div>
             </form>
 

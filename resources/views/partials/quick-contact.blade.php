@@ -2,9 +2,9 @@
 
 <!-- Left: Red Circular Phone Hotline -->
 <div class="fixed bottom-6 left-6 z-40 select-none">
-    <a href="tel:0988666888" 
+    <a href="tel:0985202432" 
        class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#e11b22] text-white shadow-xl hover:scale-110 transition-transform" 
-       title="Gọi Hotline: 0988.666.888">
+       title="Gọi Hotline: 0985.202.432">
         <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
         </svg>
@@ -25,7 +25,7 @@
     </button>
 
     <!-- Zalo Button -->
-    <a href="https://zalo.me/0988666888" 
+    <a href="https://zalo.me/0985202432" 
        target="_blank" 
        rel="noopener noreferrer" 
        class="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0068ff] text-white shadow-xl hover:scale-110 transition-transform" 
