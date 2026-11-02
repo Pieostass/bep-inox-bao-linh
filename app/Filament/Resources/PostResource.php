@@ -59,6 +59,11 @@ class PostResource extends Resource
                             ->label('Ảnh đại diện bài viết')
                             ->image()
                             ->directory('posts')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->maxSize(10240)
+                            ->openable()
+                            ->downloadable()
                             ->columnSpan(1),
 
                         Forms\Components\Group::make([
@@ -98,7 +103,8 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Ảnh')
-                    ->square(),
+                    ->square()
+                    ->disk('public'),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Tiêu đề bài viết')

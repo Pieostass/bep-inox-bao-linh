@@ -3,37 +3,42 @@ FROM php:8.2-fpm-alpine
 # Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies, Nginx, Supervisor, SQLite, and build tools
+# Runtime packages (kept in the final image)
 RUN apk add --no-cache \
     nginx \
     supervisor \
     curl \
-    git \
     bash \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
-    libzip-dev \
-    icu-dev \
-    sqlite-dev \
-    oniguruma-dev \
-    nodejs \
-    npm
+    libpng \
+    libjpeg-turbo \
+    freetype \
+    libzip \
+    icu-libs
 
-# Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+# PHP extensions (build deps are removed afterwards to keep the image small).
+# pdo_sqlite and mbstring are already compiled into the official image.
+RUN apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        freetype-dev \
+        libzip-dev \
+        icu-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) \
         gd \
-        pdo \
-        pdo_sqlite \
-        mbstring \
         zip \
         intl \
         bcmath \
-        opcache
+        opcache \
+    && apk del .build-deps
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# PHP production tuning (OPcache, upload limits, php-fpm pool)
+COPY docker/php.ini /usr/local/etc/php/conf.d/zz-production.ini
+COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/zz-pool.conf
 
 # Copy configuration files
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
@@ -45,28 +50,35 @@ RUN tr -d '\r' < /entrypoint.sh > /entrypoint_fixed.sh \
     && mv /entrypoint_fixed.sh /entrypoint.sh \
     && chmod +x /entrypoint.sh
 
+# Install PHP dependencies first (better layer caching)
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-scripts --no-autoloader --no-interaction --prefer-dist
+
 # Copy application files
 COPY . /var/www/html
 
-# Setup default .env with secure pre-generated APP_KEY
+# Base .env (no secrets here - APP_KEY etc. come from the host's env vars)
 RUN cp .env.example .env \
-    && sed -i 's|APP_KEY=|APP_KEY=base64:nJdfvzl2r/n5oMbDCpzJuFCr7k97Qgezjq3sFnC+M6M=|g' .env
+    && composer dump-autoload --optimize --no-dev \
+    && php artisan package:discover --ansi
 
-# Install PHP dependencies without dev packages
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Build frontend assets with Vite, then drop Node to slim the image
+RUN apk add --no-cache --virtual .node-deps nodejs npm \
+    && (npm ci || npm install) \
+    && npm run build \
+    && rm -rf node_modules \
+    && apk del .node-deps
 
-# Build frontend assets with Vite
-RUN npm ci || npm install \
-    && npm run build
-
-# Default environment setup
+# Default environment setup (override on the host)
 ENV APP_ENV=production
 ENV APP_DEBUG=false
-ENV APP_KEY=base64:nJdfvzl2r/n5oMbDCpzJuFCr7k97Qgezjq3sFnC+M6M=
 ENV LOG_CHANNEL=stderr
+ENV LOG_LEVEL=warning
 ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=/var/www/html/database/database.sqlite
 ENV SESSION_DRIVER=file
+ENV CACHE_STORE=file
+ENV QUEUE_CONNECTION=sync
 
 EXPOSE 80 10000
 

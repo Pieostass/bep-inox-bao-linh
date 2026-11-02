@@ -39,9 +39,15 @@ class CategoryResource extends Resource
                             ->required()
                             ->unique(ignoreRecord: true),
 
-                        Forms\Components\TextInput::make('image')
-                            ->label('Ảnh đại diện (URL)')
-                            ->placeholder('https://...'),
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Ảnh đại diện danh mục (Tải từ PC / Laptop)')
+                            ->image()
+                            ->directory('categories')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->maxSize(10240)
+                            ->openable()
+                            ->downloadable(),
 
                         Forms\Components\TextInput::make('sort_order')
                             ->label('Thứ tự sắp xếp')
@@ -66,7 +72,8 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Ảnh'),
+                    ->label('Ảnh')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Tên danh mục')
                     ->searchable()

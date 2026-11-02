@@ -14,14 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Admin account
-        User::updateOrCreate(
-            ['email' => 'hieusur222@gmail.com'],
-            [
-                'name' => 'Hieu',
-                'password' => Hash::make('Abcabcabc123.'),
-            ]
-        );
+        // 1. Admin account (credentials from env; never overwrite an existing password)
+        $adminEmail = env('ADMIN_EMAIL', app()->isProduction() ? null : 'hieusur222@gmail.com');
+        $adminPassword = env('ADMIN_PASSWORD', app()->isProduction() ? null : 'Abcabcabc123.');
+
+        if ($adminEmail && $adminPassword) {
+            User::firstOrCreate(
+                ['email' => $adminEmail],
+                [
+                    'name' => env('ADMIN_NAME', 'Admin'),
+                    'password' => Hash::make($adminPassword),
+                ]
+            );
+        } elseif (User::count() === 0) {
+            $this->command?->warn('ADMIN_EMAIL / ADMIN_PASSWORD chưa được cấu hình - bỏ qua tạo tài khoản admin.');
+        }
 
         // 2. Categories & Products
         $this->call(CatalogSeeder::class);

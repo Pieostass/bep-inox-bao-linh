@@ -28,20 +28,7 @@
             <!-- Column 1: Product Gallery (Left 5 Cols) -->
             <div class="lg:col-span-5 space-y-4">
                 @php
-                    $allImages = [];
-                    if (!empty($product->thumbnail)) {
-                        $allImages[] = $product->thumbnail;
-                    }
-                    if (is_array($product->images)) {
-                        foreach ($product->images as $img) {
-                            if (!in_array($img, $allImages) && !empty($img)) {
-                                $allImages[] = $img;
-                            }
-                        }
-                    }
-                    if (empty($allImages)) {
-                        $allImages[] = 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80';
-                    }
+                    $allImages = $product->gallery_urls;
                 @endphp
 
                 <!-- Big Image -->
@@ -217,7 +204,7 @@
                         <div class="bg-white rounded-lg border border-slate-200 p-3 flex flex-col justify-between hover:shadow-md transition-shadow">
                             <div>
                                 <a href="{{ route('catalog.show', $rel->slug) }}" class="block aspect-square overflow-hidden mb-2 bg-slate-50">
-                                    <img src="{{ $rel->thumbnail }}" alt="{{ $rel->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
+                                    <img src="{{ $rel->thumbnail_url }}" alt="{{ $rel->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
                                 </a>
                                 <h3 class="text-xs font-semibold text-slate-800 hover:text-[#e11b22] line-clamp-2 leading-snug">
                                     <a href="{{ route('catalog.show', $rel->slug) }}">{{ $rel->name }}</a>

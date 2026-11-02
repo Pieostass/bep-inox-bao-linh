@@ -4,16 +4,41 @@ services:
     runtime: docker
     plan: free
     region: singapore
+    healthCheckPath: /up
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: "false"
+      - key: APP_NAME
+        value: "Bếp Inox Bảo Linh"
+      - key: APP_LOCALE
+        value: vi
+      # Set these in the Render dashboard (secrets, not committed to git):
+      #   APP_KEY        -> output of `php artisan key:generate --show`
+      #   APP_URL        -> https://your-domain
+      #   ADMIN_EMAIL / ADMIN_PASSWORD -> admin account created on first boot
+      - key: APP_KEY
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: warning
       - key: DB_CONNECTION
         value: sqlite
       - key: DB_DATABASE
         value: /var/www/html/database/database.sqlite
       - key: SESSION_DRIVER
         value: file
+      - key: SESSION_SECURE_COOKIE
+        value: "true"
       - key: CACHE_STORE
         value: file
+      - key: QUEUE_CONNECTION
+        value: sync

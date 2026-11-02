@@ -145,7 +145,7 @@
                         <div>
                             <!-- Thumbnail -->
                             <a href="{{ route('catalog.show', $p->slug) }}" class="block aspect-square overflow-hidden mb-2 bg-slate-50">
-                                <img src="{{ $p->thumbnail }}" alt="{{ $p->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
+                                <img src="{{ $p->thumbnail_url }}" alt="{{ $p->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
                             </a>
 
                             <!-- Title -->
@@ -215,7 +215,7 @@
                 <div class="bg-white rounded-lg border border-slate-200 p-3 flex flex-col justify-between hover:shadow-md transition-shadow">
                     <div>
                         <a href="{{ route('catalog.show', $p->slug) }}" class="block aspect-square overflow-hidden mb-2 bg-slate-50">
-                            <img src="{{ $p->thumbnail }}" alt="{{ $p->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
+                            <img src="{{ $p->thumbnail_url }}" alt="{{ $p->name }}" class="w-full h-full object-contain hover:scale-105 transition-transform">
                         </a>
                         <h3 class="text-xs font-semibold text-slate-800 hover:text-[#e11b22] line-clamp-2 leading-snug">
                             <a href="{{ route('catalog.show', $p->slug) }}">{{ $p->name }}</a>

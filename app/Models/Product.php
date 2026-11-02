@@ -48,6 +48,51 @@ class Product extends Model
     }
 
     /**
+     * Get thumbnail URL (handles both uploaded paths from storage and external URLs)
+     */
+    public function getThumbnailUrlAttribute(): string
+    {
+        if (empty($this->thumbnail)) {
+            return 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80';
+        }
+
+        if (str_starts_with($this->thumbnail, 'http://') || str_starts_with($this->thumbnail, 'https://')) {
+            return $this->thumbnail;
+        }
+
+        return asset('storage/' . $this->thumbnail);
+    }
+
+    /**
+     * Get all images URLs for gallery and slideshow
+     */
+    public function getGalleryUrlsAttribute(): array
+    {
+        $urls = [];
+        if (!empty($this->thumbnail)) {
+            $urls[] = $this->thumbnail_url;
+        }
+
+        if (is_array($this->images)) {
+            foreach ($this->images as $img) {
+                if (empty($img)) continue;
+                $url = (str_starts_with($img, 'http://') || str_starts_with($img, 'https://'))
+                    ? $img
+                    : asset('storage/' . $img);
+                if (!in_array($url, $urls)) {
+                    $urls[] = $url;
+                }
+            }
+        }
+
+        if (empty($urls)) {
+            $urls[] = 'https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80';
+        }
+
+        return $urls;
+    }
+
+    /**
      * Get display price string
      */
     public function getDisplayPriceAttribute(): string

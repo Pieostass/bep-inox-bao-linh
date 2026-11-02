@@ -162,8 +162,9 @@
                 </div>
 
                 <!-- Hotline hỗ trợ trực tiếp -->
-                <div class="text-xs text-center text-slate-500 pt-2 border-t border-slate-100">
-                    Hoặc liên hệ Hotline kỹ thuật trực tiếp: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a>
+                <div class="text-xs text-center text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap justify-center gap-x-4 gap-y-1">
+                    <span>Kinh doanh: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a></span>
+                    <span>Kỹ thuật: <a href="tel:0976792432" class="text-[#e11b22] font-black hover:underline">0976.792.432</a></span>
                 </div>
             </form>
 

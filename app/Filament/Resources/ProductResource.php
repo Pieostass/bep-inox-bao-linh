@@ -81,15 +81,32 @@ class ProductResource extends Resource
                     ]),
 
                 Forms\Components\Section::make('Hình ảnh sản phẩm')
+                    ->description('Tải ảnh đại diện và bộ sưu tập ảnh trực tiếp từ máy tính (Hỗ trợ JPG, PNG, WEBP, tối đa 10MB)')
                     ->columns(2)
                     ->schema([
-                        Forms\Components\TextInput::make('thumbnail')
-                            ->label('Ảnh đại diện (URL)')
-                            ->placeholder('https://...'),
+                        Forms\Components\FileUpload::make('thumbnail')
+                            ->label('Ảnh đại diện chính (Browse từ PC/Laptop)')
+                            ->image()
+                            ->directory('products')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->maxSize(10240)
+                            ->openable()
+                            ->downloadable()
+                            ->columnSpan(1),
 
-                        Forms\Components\TagsInput::make('images')
-                            ->label('Danh sách ảnh Gallery (URLs)')
-                            ->placeholder('Thêm URL ảnh rồi Enter'),
+                        Forms\Components\FileUpload::make('images')
+                            ->label('Bộ sưu tập ảnh chi tiết (Gallery - Chọn nhiều ảnh)')
+                            ->image()
+                            ->multiple()
+                            ->reorderable()
+                            ->directory('products/gallery')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->maxSize(10240)
+                            ->openable()
+                            ->downloadable()
+                            ->columnSpan(1),
                     ]),
 
                 Forms\Components\Section::make('Thông số kỹ thuật (Bảng Specifications)')
@@ -130,7 +147,8 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Ảnh'),
+                    ->label('Ảnh')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Tên thiết bị')
                     ->searchable()

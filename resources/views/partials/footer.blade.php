@@ -92,24 +92,20 @@
                     </h3>
                     <div class="space-y-2 text-red-100">
                         <div>
-                            <span>Tư vấn Miền Bắc:</span><br>
+                            <span>Kinh doanh Miền Bắc:</span><br>
                             <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
-                            <span>Tư vấn Miền Trung:</span><br>
-                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
-                        </div>
-                        <div>
-                            <span>Tư vấn Miền Nam:</span><br>
+                            <span>Kinh doanh Miền Trung & Nam:</span><br>
                             <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
                         </div>
                         <div>
                             <span>Khách hàng mua sỉ / Dự án:</span><br>
                             <a href="tel:0985202432" class="font-bold text-amber-300 hover:underline text-sm">0985.202.432</a>
                         </div>
-                        <div>
-                            <span>Kỹ thuật & Bảo hành:</span><br>
-                            <a href="tel:0985202432" class="font-bold text-white hover:underline text-sm">0985.202.432</a>
+                        <div class="pt-1 border-t border-red-700/60">
+                            <span class="text-amber-200 font-bold">Hỗ trợ Kỹ thuật & Bảo hành:</span><br>
+                            <a href="tel:0976792432" class="font-black text-white hover:underline text-base">0976.792.432</a>
                         </div>
                     </div>
                 </div>
@@ -124,12 +120,6 @@
                     </p>
 
                     <div class="pt-2 flex flex-col space-y-2">
-                        <!-- Red/Blue official notification badge -->
-                        <div class="inline-flex items-center space-x-2 bg-white text-slate-800 px-3 py-1.5 rounded border border-red-300 w-fit">
-                            <span class="w-3 h-3 rounded-full bg-blue-600 flex items-center justify-center text-[8px] text-white font-bold">✓</span>
-                            <span class="font-bold text-[11px] uppercase text-blue-900">ĐÃ THÔNG BÁO BỘ CÔNG THƯƠNG</span>
-                        </div>
-
                         <div class="inline-flex items-center space-x-2 bg-white text-slate-800 px-3 py-1.5 rounded border border-red-300 w-fit">
                             <span class="w-3 h-3 rounded-full bg-emerald-600 flex items-center justify-center text-[8px] text-white font-bold">✓</span>
                             <span class="font-bold text-[11px] uppercase text-emerald-900">INOX 304 CHUẨN KIỂM ĐỊNH</span>

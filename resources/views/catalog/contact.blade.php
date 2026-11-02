@@ -38,8 +38,8 @@
                     <p>• <strong>Địa chỉ xưởng & Showroom:</strong> Số 15, Ngõ 419 Đường Lĩnh Nam, Phường Vĩnh Hưng, Hà Nội, Việt Nam.</p>
                     <p>• <strong>Mã số thuế:</strong> <span class="font-mono font-bold text-slate-900">0111524104</span></p>
                     <p>• <strong>Đại diện pháp luật:</strong> Ông Phạm Anh Ngọc (Giám đốc)</p>
-                    <p>• <strong>Hotline tư vấn báo giá:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-black text-base">0985.202.432</a></p>
-                    <p>• <strong>Kỹ thuật & bảo hành:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-bold">0985.202.432</a></p>
+                    <p>• <strong>Hotline kinh doanh & tư vấn báo giá:</strong> <a href="tel:0985202432" class="text-[#e11b22] font-black text-base">0985.202.432</a></p>
+                    <p>• <strong>Kỹ thuật & bảo hành:</strong> <a href="tel:0976792432" class="text-[#e11b22] font-black text-base">0976.792.432</a></p>
                     <p>• <strong>Email liên hệ:</strong> <a href="mailto:bepbaolinh38@gmail.com" class="text-slate-900 font-semibold hover:underline">bepbaolinh38@gmail.com</a></p>
                     <p>• <strong>Giờ làm việc:</strong> 7:30 - 20:30 (Thứ 2 - Chủ Nhật, phục vụ kể cả ngày lễ)</p>
                     
@@ -71,27 +71,52 @@
                         </p>
                     </div>
 
-                    <!-- Hotline Card -->
-                    <div class="p-5 rounded-xl border-2 border-red-200 bg-red-50/60 flex flex-col justify-between space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-11 h-11 rounded-full bg-[#e11b22] text-white flex items-center justify-center shrink-0 shadow">
-                                <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
+                    <!-- Hotline Cards -->
+                    <div class="p-5 rounded-xl border-2 border-red-200 bg-red-50/60 flex flex-col justify-between space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Kinh Doanh -->
+                            <div class="flex items-center space-x-3 bg-white p-3 rounded-lg border border-red-200 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-[#e11b22] text-white flex items-center justify-center shrink-0 shadow">
+                                    <svg class="w-5 h-5 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                </div>
+                                <div class="min-w-0">
+                                    <span class="text-xs font-semibold text-slate-600 block">Kinh Doanh & Báo Giá:</span>
+                                    <a href="tel:0985202432" class="text-lg font-black text-[#e11b22] hover:underline block truncate">0985.202.432</a>
+                                </div>
                             </div>
-                            <div>
-                                <span class="text-xs font-semibold text-slate-600 block">Hotline Kỹ Thuật & Báo Giá:</span>
-                                <span class="text-xl sm:text-2xl font-black text-[#e11b22]">0985.202.432</span>
+
+                            <!-- Kỹ Thuật -->
+                            <div class="flex items-center space-x-3 bg-white p-3 rounded-lg border border-red-200 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center shrink-0 shadow">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="min-w-0">
+                                    <span class="text-xs font-semibold text-slate-600 block">Kỹ Thuật & Bảo Hành:</span>
+                                    <a href="tel:0976792432" class="text-lg font-black text-slate-900 hover:underline block truncate">0976.792.432</a>
+                                </div>
                             </div>
                         </div>
+
                         <p class="text-xs text-slate-600">
-                            Hỗ trợ giải đáp thông số kỹ thuật, hướng dẫn điện 3 pha / 1 pha và tư vấn chọn model phù hợp ngân sách.
+                            Hỗ trợ giải đáp thông số kỹ thuật, hướng dẫn nguồn điện, tư vấn công suất máy và bảo hành tận nơi.
                         </p>
-                        <a href="tel:0985202432" 
-                           class="w-full py-3 px-4 bg-[#e11b22] hover:bg-[#c6151c] text-white font-bold text-xs sm:text-sm uppercase rounded-lg transition-colors shadow text-center flex items-center justify-center space-x-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            <span>BẤM ĐỂ GỌI HOTLINE NGAY</span>
-                        </a>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <a href="tel:0985202432" 
+                               class="py-2.5 px-3 bg-[#e11b22] hover:bg-[#c6151c] text-white font-bold text-xs uppercase rounded-lg transition-colors shadow text-center flex items-center justify-center space-x-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                <span>GỌI KINH DOANH</span>
+                            </a>
+                            <a href="tel:0976792432" 
+                               class="py-2.5 px-3 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs uppercase rounded-lg transition-colors shadow text-center flex items-center justify-center space-x-1.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                <span>GỌI KỸ THUẬT</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Zalo Card -->

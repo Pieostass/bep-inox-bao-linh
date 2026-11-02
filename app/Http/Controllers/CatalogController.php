@@ -15,14 +15,6 @@ class CatalogController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::query()
-            ->where('is_active', true)
-            ->orderBy('sort_order')
-            ->withCount(['products' => function ($query) {
-                $query->where('is_active', true);
-            }])
-            ->get();
-
         $selectedCategory = null;
         if ($request->filled('category')) {
             $selectedCategory = Category::where('slug', $request->query('category'))->first();
@@ -56,13 +48,6 @@ class CatalogController extends Controller
 
         $products = $query->paginate(12)->withQueryString();
 
-        // Featured products for spotlight / highlights
-        $featuredProducts = Product::query()
-            ->where('is_active', true)
-            ->where('is_featured', true)
-            ->take(6)
-            ->get();
-
         // Latest articles from database
         $latestPosts = Post::query()
             ->where('is_published', true)
@@ -70,7 +55,7 @@ class CatalogController extends Controller
             ->take(4)
             ->get();
 
-        return view('catalog.index', compact('categories', 'selectedCategory', 'products', 'featuredProducts', 'latestPosts'));
+        return view('catalog.index', compact('selectedCategory', 'products', 'latestPosts'));
     }
 
     /**
@@ -86,7 +71,8 @@ class CatalogController extends Controller
             ->with('category')
             ->firstOrFail();
 
-        $product->increment('views_count');
+        // Lightweight counter: no updated_at bump, no model events
+        Product::whereKey($product->id)->increment('views_count');
 
         // Related products in same category
         $relatedProducts = Product::query()
@@ -96,9 +82,7 @@ class CatalogController extends Controller
             ->take(5)
             ->get();
 
-        $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
-
-        return view('catalog.show', compact('product', 'relatedProducts', 'categories'));
+        return view('catalog.show', compact('product', 'relatedProducts'));
     }
 
     /**

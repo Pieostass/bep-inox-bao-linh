@@ -109,8 +109,9 @@
                 </div>
             </div>
         @endif
-        <div class="px-4 py-3 border-t border-slate-100 text-xs text-slate-600">
-            Hotline: <a href="tel:0985202432" class="text-[#e11b22] font-black">0985.202.432</a>
+        <div class="px-4 py-3 border-t border-slate-100 text-xs text-slate-600 flex flex-col space-y-1">
+            <div>Kinh doanh: <a href="tel:0985202432" class="text-[#e11b22] font-black">0985.202.432</a></div>
+            <div>Kỹ thuật: <a href="tel:0976792432" class="text-[#e11b22] font-black">0976.792.432</a></div>
         </div>
     </nav>
     <script>
@@ -148,10 +149,10 @@
                 </a>
             </div>
 
-            <!-- Hotline Right (Newsun Style: Tổng đài & Tư vấn số đỏ) -->
+            <!-- Hotline Right (Newsun Style: Kinh doanh & Kỹ thuật số đỏ) -->
             <div class="flex items-center space-x-4 text-xs">
-                <span>Tổng đài: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a></span>
-                <span>Tư vấn: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a></span>
+                <span>Kinh doanh: <a href="tel:0985202432" class="text-[#e11b22] font-black hover:underline">0985.202.432</a></span>
+                <span>Kỹ thuật: <a href="tel:0976792432" class="text-[#e11b22] font-black hover:underline">0976.792.432</a></span>
             </div>
 
         </div>

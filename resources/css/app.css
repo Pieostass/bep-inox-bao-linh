@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
@@ -18,6 +17,14 @@
     --color-brand-navy-light: #1e3a8a;
     --color-brand-gray: #f8fafc;
     --color-brand-border: #e2e8f0;
+}
+
+/* Prevent horizontal scroll / white gap on mobile.
+   `clip` (not `hidden`) keeps `position: sticky` working on the header. */
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 @keyframes pulse-ring {

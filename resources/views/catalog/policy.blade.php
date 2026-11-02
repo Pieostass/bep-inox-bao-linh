@@ -86,10 +86,11 @@
 
         <!-- Hotlines -->
         <div class="p-4 bg-red-50 rounded-xl border border-red-200 text-xs sm:text-sm text-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span>Mọi thắc mắc về bảo hành hoặc sự cố kỹ thuật, vui lòng gọi đường dây nóng 24/7:</span>
-            <a href="tel:0985202432" class="text-[#e11b22] font-black text-base hover:underline shrink-0">
-                0985.202.432
-            </a>
+            <span>Mọi thắc mắc về bảo hành hoặc sự cố kỹ thuật, vui lòng liên hệ:</span>
+            <div class="flex items-center space-x-4 shrink-0">
+                <span>Kỹ thuật: <a href="tel:0976792432" class="text-[#e11b22] font-black text-base hover:underline">0976.792.432</a></span>
+                <span>Kinh doanh: <a href="tel:0985202432" class="text-slate-800 font-bold hover:underline">0985.202.432</a></span>
+            </div>
         </div>
 
     </div>

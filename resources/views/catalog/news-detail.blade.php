@@ -55,7 +55,7 @@
                 Để đảm bảo độ bền tối ưu cho thiết bị inox và hệ thống nhiệt điện, người dùng nên thực hiện bảo dưỡng vệ sinh hàng ngày sau mỗi ca làm việc. Không sử dụng các búi sắt thô ráp chà xát mạnh vào mặt kính điều khiển hoặc các cảm biến nhiệt độ. Thường xuyên kiểm tra nguồn điện cấp và đường xả nước đáy nồi, van phao tự động.
             </p>
             <p>
-                Nếu có bất kỳ dấu hiệu bất thường nào về nhiệt độ hoặc hiện tượng rò rỉ điện, hãy ngắt ngay nguồn điện cấp và liên hệ với đội ngũ kỹ thuật của Công ty TNHH Bếp Inox Bảo Linh theo số hotline <strong class="text-[#e11b22]">0985.202.432</strong> để được hướng dẫn xử lý an toàn.
+                Nếu có bất kỳ dấu hiệu bất thường nào về nhiệt độ hoặc hiện tượng rò rỉ điện, hãy ngắt ngay nguồn điện cấp và liên hệ với đội ngũ kỹ thuật của Công ty TNHH Bếp Inox Bảo Linh theo hotline kỹ thuật <strong class="text-[#e11b22]">0976.792.432</strong> (hoặc kinh doanh: <strong>0985.202.432</strong>) để được hướng dẫn xử lý an toàn.
             </p>
         </div>
 
