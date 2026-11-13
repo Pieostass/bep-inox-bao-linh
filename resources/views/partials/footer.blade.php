@@ -36,6 +36,10 @@
                 
                 <!-- Col 1: Company Profile -->
                 <div class="space-y-3">
+                    <div class="inline-block bg-white px-3.5 py-1.5 rounded-xl shadow-sm">
+                        <img src="{{ asset('images/logo-horizontal.png') }}" alt="Bếp Inox Bảo Linh" class="h-9 w-auto object-contain">
+                    </div>
+
                     <h3 class="font-black text-sm uppercase tracking-wide text-white">
                         CÔNG TY TNHH BẾP INOX BẢO LINH
                     </h3>
