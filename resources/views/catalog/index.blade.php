@@ -5,40 +5,112 @@
 @section('content')
 
 <div class="bg-white">
-    <!-- 1. Hero Promotional Banner (AI Background: Gia đình nấu ăn ấm cúng) -->
+    <!-- 1. Hero Promotional Banner Carousel (7 Ảnh thực tế xưởng & sản phẩm Bảo Linh) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-6">
-        <div class="relative overflow-hidden rounded-2xl shadow-xl min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex items-center bg-slate-900">
-            <!-- AI Background Image (WebP, responsive; JPG fallback) -->
-            <picture>
-                <source type="image/webp"
-                        srcset="{{ asset('images/banner-family-cooking-mobile.webp') }} 800w, {{ asset('images/banner-family-cooking.webp') }} 1376w"
-                        sizes="(max-width: 1280px) 100vw, 1216px">
-                <img src="{{ asset('images/banner-family-cooking.jpg') }}" 
-                     alt="Gia đình hạnh phúc cùng nấu ăn bên bếp Bảo Linh" 
-                     width="1376" height="768"
-                     fetchpriority="high" decoding="async"
-                     class="absolute inset-0 w-full h-full object-cover object-right md:object-center">
-            </picture>
+        @php
+            $bannerSlides = [
+                [
+                    'img' => asset('images/banners/banner-slide-1.jpg'),
+                    'alt' => 'Nồi điện nấu phở Inox 304 tiêu chuẩn Bảo Linh',
+                    'badge' => 'Ưu đãi đặc quyền 2026',
+                    'title' => 'NỒI ĐIỆN NẤU PHỞ',
+                    'highlight' => 'GIÁ GỐC TẬN XƯỞNG',
+                    'desc' => 'Đồng hành cùng hàng ngàn gian bếp gia đình và quán ăn với thiết bị Inox 304 tiêu chuẩn chất lượng cao, bền bỉ và tiết kiệm điện.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-2.jpg'),
+                    'alt' => 'Dãy bếp Á công nghiệp lửa mạnh inox 304',
+                    'badge' => 'Chuyên gia bếp Á',
+                    'title' => 'BẾP Á CÔNG NGHIỆP',
+                    'highlight' => 'LỬA MẠNH - BỀN BỈ',
+                    'desc' => 'Bếp xào cao áp, bếp hầm inox 304 công suất lớn dành cho nhà hàng, khách sạn và bếp ăn công nghiệp.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-3.jpg'),
+                    'alt' => 'Gia công thiết bị bếp inox công nghiệp theo bản vẽ',
+                    'badge' => 'Gia công theo yêu cầu',
+                    'title' => 'GIA CÔNG THEO BẢN VẼ',
+                    'highlight' => 'CHUẨN THIẾT KẾ 100%',
+                    'desc' => 'Khảo sát tận nơi, thiết kế 2D/3D và sản xuất đồng bộ hệ thống bếp công nghiệp trọn gói, bảo hành 12 tháng.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-4.jpg'),
+                    'alt' => 'Hệ thống nồi hầm xương và chụp hút mùi công nghiệp',
+                    'badge' => 'Hệ thống hầm công suất lớn',
+                    'title' => 'HỆ THỐNG NỒI HẦM',
+                    'highlight' => 'DUNG TÍCH 50L - 500L',
+                    'desc' => 'Bảo ôn 3 lớp chống bỏng, hệ thống điều khiển nhiệt độ thông minh, tiết kiệm hơn 30% điện năng.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-5.jpg'),
+                    'alt' => 'Showroom tủ đông, bàn mát inox công nghiệp',
+                    'badge' => 'Thiết bị lạnh công nghiệp',
+                    'title' => 'TỦ ĐÔNG & BÀN MÁT',
+                    'highlight' => 'LÀM LẠNH NHANH CHÂU ÂU',
+                    'desc' => 'Tủ bảo quản thực phẩm tiêu chuẩn cao cho nhà hàng, lốc làm lạnh cao cấp, bảo hành bảo trì uy tín.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-6.jpg'),
+                    'alt' => 'Khu bếp xưởng sạch inox Bảo Linh',
+                    'badge' => 'Hàng sẵn giao ngay',
+                    'title' => 'XƯỞNG SẢN XUẤT LĨNH NAM',
+                    'highlight' => 'TRỰC TIẾP TẠI HÀ NỘI',
+                    'desc' => 'Hàng trăm thiết bị sẵn có tại xưởng số 15 Ngõ 419 Lĩnh Nam, Hà Nội. Kính mời quý khách tới tham quan trực tiếp.',
+                ],
+                [
+                    'img' => asset('images/banners/banner-slide-7.jpg'),
+                    'alt' => 'Dãy chảo xào công nghiệp inox công suất lớn',
+                    'badge' => 'Công nghệ chế biến mới',
+                    'title' => 'CHẢO XÀO TỰ ĐỘNG',
+                    'highlight' => 'NĂNG SUẤT VƯỢT TRỘI',
+                    'desc' => 'Giải pháp nấu xào tự động cho suất ăn công nghiệp, bệnh viện, trường học và nhà máy chế biến thực phẩm.',
+                ],
+            ];
+        @endphp
+
+        <div id="heroBannerCarousel" 
+             class="group relative overflow-hidden rounded-2xl shadow-xl min-h-[400px] sm:min-h-[440px] lg:min-h-[480px] flex items-center bg-slate-900 select-none">
             
+            <!-- 7 Background Slide Images -->
+            <div class="absolute inset-0 w-full h-full">
+                @foreach($bannerSlides as $idx => $slide)
+                    <div class="hero-slide-bg absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10' }}"
+                         data-slide="{{ $idx }}">
+                        <img src="{{ $slide['img'] }}" 
+                             alt="{{ $slide['alt'] }}"
+                             width="1200" height="700"
+                             class="w-full h-full object-cover object-center sm:object-right"
+                             {{ $idx === 0 ? 'fetchpriority=high' : 'loading=lazy' }}>
+                    </div>
+                @endforeach
+            </div>
+
             <!-- Soft Gradient Overlay on Left to make text pop -->
-            <div class="absolute inset-0 pointer-events-none" 
-                 style="background: linear-gradient(to right, rgba(10, 15, 29, 0.94) 0%, rgba(10, 15, 29, 0.82) 42%, rgba(10, 15, 29, 0.25) 68%, transparent 100%);"></div>
+            <div class="absolute inset-0 pointer-events-none z-10" 
+                 style="background: linear-gradient(to right, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.85) 45%, rgba(10, 15, 29, 0.35) 75%, rgba(10, 15, 29, 0.15) 100%);"></div>
+            
+            <!-- Bottom Subtle Dark Gradient for Dots Indicator -->
+            <div class="absolute inset-x-0 bottom-0 h-20 pointer-events-none z-10 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
             <!-- Content on Top of Background -->
-            <div class="relative z-10 max-w-xl py-8 sm:py-12 px-6 sm:px-10 text-white space-y-4">
+            <div class="relative z-20 max-w-xl py-8 sm:py-12 px-6 sm:px-10 text-white space-y-4">
+                <!-- Badge -->
                 <div class="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#e11b22]/90 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-sm border border-red-400/30">
-                    <span>Ưu đãi đặc quyền 2026</span>
+                    <span id="heroSlideBadge">{{ $bannerSlides[0]['badge'] }}</span>
                 </div>
                 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight text-white drop-shadow-lg">
-                    NỒI ĐIỆN NẤU PHỞ <br>
-                    <span class="text-amber-400">GIÁ GỐC TẬN XƯỞNG</span>
+                <!-- Title & Highlight -->
+                <h1 class="text-2xl sm:text-4xl lg:text-[44px] font-black uppercase tracking-tight leading-tight text-white drop-shadow-lg min-h-[2.5em] flex flex-col justify-center">
+                    <span id="heroSlideTitle" class="transition-all duration-300">{{ $bannerSlides[0]['title'] }}</span>
+                    <span id="heroSlideHighlight" class="text-amber-400 transition-all duration-300">{{ $bannerSlides[0]['highlight'] }}</span>
                 </h1>
                 
-                <p class="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-md">
-                    Đồng hành cùng hàng ngàn gian bếp gia đình và quán ăn với thiết bị Inox 304 tiêu chuẩn chất lượng cao, bền bỉ và tiết kiệm điện.
+                <!-- Description -->
+                <p id="heroSlideDesc" class="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-md transition-all duration-300 min-h-[2.8em]">
+                    {{ $bannerSlides[0]['desc'] }}
                 </p>
 
+                <!-- Value Badges -->
                 <div class="flex flex-wrap items-center gap-2.5 pt-1">
                     <div class="bg-amber-400 text-slate-900 font-black px-3.5 py-1.5 rounded-xl text-center shadow">
                         <span class="text-[9px] block uppercase font-bold text-slate-800">TẶNG THÊM</span>
@@ -54,6 +126,7 @@
                     </div>
                 </div>
 
+                <!-- Call to Action Button -->
                 <div class="pt-2">
                     <button type="button" 
                             onclick="openQuoteModal('', 'Nhận ưu đãi giảm giá 30%')" 
@@ -62,8 +135,168 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Previous / Next Arrow Controls -->
+            <button type="button" 
+                    id="heroPrevBtn"
+                    aria-label="Ảnh trước" 
+                    class="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-[#e11b22] text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/20 hover:scale-110">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" 
+                    id="heroNextBtn"
+                    aria-label="Ảnh kế tiếp" 
+                    class="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-[#e11b22] text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/20 hover:scale-110">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <!-- Pill Dots Pagination (Chuẩn theo mẫu của bạn) -->
+            <div class="absolute bottom-4 inset-x-0 z-30 flex items-center justify-center gap-1.5 sm:gap-2">
+                @foreach($bannerSlides as $idx => $slide)
+                    <button type="button" 
+                            class="hero-dot-btn transition-all duration-300 {{ $idx === 0 ? 'w-7 sm:w-8 h-2 bg-[#2563eb] rounded-full shadow-md' : 'w-2.5 sm:w-3 h-2 bg-white/50 hover:bg-white/80 rounded-full cursor-pointer' }}"
+                            data-dot="{{ $idx }}"
+                            aria-label="Chuyển tới slide {{ $idx + 1 }}">
+                    </button>
+                @endforeach
+            </div>
+
         </div>
     </div>
+
+    <!-- Script điều khiển Slider 7 ảnh -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slidesData = @json($bannerSlides);
+            const slideBgs = document.querySelectorAll('.hero-slide-bg');
+            const dotBtns = document.querySelectorAll('.hero-dot-btn');
+            const badgeEl = document.getElementById('heroSlideBadge');
+            const titleEl = document.getElementById('heroSlideTitle');
+            const highlightEl = document.getElementById('heroSlideHighlight');
+            const descEl = document.getElementById('heroSlideDesc');
+            const container = document.getElementById('heroBannerCarousel');
+            const prevBtn = document.getElementById('heroPrevBtn');
+            const nextBtn = document.getElementById('heroNextBtn');
+
+            let currentSlide = 0;
+            const totalSlides = slidesData.length;
+            let autoTimer = null;
+
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                currentSlide = index;
+
+                // Update Background Images (smooth crossfade)
+                slideBgs.forEach((bg, idx) => {
+                    if (idx === currentSlide) {
+                        bg.classList.remove('opacity-0', '-z-10');
+                        bg.classList.add('opacity-100', 'z-0');
+                    } else {
+                        bg.classList.remove('opacity-100', 'z-0');
+                        bg.classList.add('opacity-0', '-z-10');
+                    }
+                });
+
+                // Update Pill Dots (active elongated blue pill, inactive compact gray pill)
+                dotBtns.forEach((dot, idx) => {
+                    if (idx === currentSlide) {
+                        dot.className = 'hero-dot-btn transition-all duration-300 w-7 sm:w-8 h-2 bg-[#2563eb] rounded-full shadow-md';
+                    } else {
+                        dot.className = 'hero-dot-btn transition-all duration-300 w-2.5 sm:w-3 h-2 bg-white/50 hover:bg-white/80 rounded-full cursor-pointer';
+                    }
+                });
+
+                // Smooth Text Transition
+                const d = slidesData[currentSlide];
+                if (badgeEl) badgeEl.textContent = d.badge;
+                if (titleEl) {
+                    titleEl.style.opacity = '0';
+                    setTimeout(() => {
+                        titleEl.textContent = d.title;
+                        titleEl.style.opacity = '1';
+                    }, 150);
+                }
+                if (highlightEl) {
+                    highlightEl.style.opacity = '0';
+                    setTimeout(() => {
+                        highlightEl.textContent = d.highlight;
+                        highlightEl.style.opacity = '1';
+                    }, 150);
+                }
+                if (descEl) {
+                    descEl.style.opacity = '0';
+                    setTimeout(() => {
+                        descEl.textContent = d.desc;
+                        descEl.style.opacity = '1';
+                    }, 150);
+                }
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoTimer = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 4000);
+            }
+
+            function stopAutoPlay() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            // Dot Clicks
+            dotBtns.forEach((dot) => {
+                dot.addEventListener('click', function () {
+                    const target = parseInt(this.getAttribute('data-dot'), 10);
+                    goToSlide(target);
+                    startAutoPlay();
+                });
+            });
+
+            // Prev / Next Clicks
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    goToSlide(currentSlide - 1);
+                    startAutoPlay();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    goToSlide(currentSlide + 1);
+                    startAutoPlay();
+                });
+            }
+
+            // Pause on hover (desktop)
+            if (container) {
+                container.addEventListener('mouseenter', stopAutoPlay);
+                container.addEventListener('mouseleave', startAutoPlay);
+
+                // Touch swipe on mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoPlay();
+                }, { passive: true });
+
+                container.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchStartX - touchEndX > 50) {
+                        goToSlide(currentSlide + 1);
+                    } else if (touchEndX - touchStartX > 50) {
+                        goToSlide(currentSlide - 1);
+                    }
+                    startAutoPlay();
+                }, { passive: true });
+            }
+
+            startAutoPlay();
+        });
+    </script>
 
     <!-- 2. Category Grid (Khung danh mục viền đỏ 2 hàng chuẩn Newsun) -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
