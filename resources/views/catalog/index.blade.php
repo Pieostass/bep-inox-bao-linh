@@ -107,34 +107,22 @@
                 height: 100%;
                 object-fit: cover;
                 object-position: center 35%;
-                filter: brightness(1.04) contrast(1.05);
+                filter: brightness(1.03) contrast(1.06);
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
                 display: block;
             }
 
-            /* Lớp phủ Gradient sáng, trong trẻo: chỉ phủ mờ nhẹ bên trái dưới chữ để đọc chữ rõ, nửa bên phải để trong suốt 100% cho ảnh sáng rõ */
-            .hero-gradient-overlay {
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-                z-index: 10;
-                background: linear-gradient(90deg, rgba(10, 15, 29, 0.94) 0%, rgba(10, 15, 29, 0.8) 35%, rgba(10, 15, 29, 0.25) 55%, rgba(10, 15, 29, 0) 70%);
-            }
-            @media (max-width: 640px) {
-                .hero-gradient-overlay {
-                    background: linear-gradient(180deg, rgba(10, 15, 29, 0.92) 0%, rgba(10, 15, 29, 0.75) 60%, rgba(10, 15, 29, 0.35) 100%);
-                }
-            }
-
-            /* Lớp phủ mờ đáy nhẹ cho chấm viên thuốc */
+            /* Lớp phủ mờ đáy rất nhẹ cho các chấm chỉ số */
             .hero-bottom-shade {
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                height: 48px;
+                height: 36px;
                 pointer-events: none;
                 z-index: 10;
-                background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
             }
 
             /* Nút mũi tên chuyển ảnh Next / Prev */
@@ -187,84 +175,37 @@
                 border: none;
                 padding: 0;
                 cursor: pointer;
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: rgba(255, 255, 255, 0.6);
                 transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                box-shadow: 0 1px 4px rgba(0,0,0,0.4);
                 outline: none;
             }
             .hero-dot-pill:hover {
-                background-color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255, 0.95);
             }
             .hero-dot-pill.is-active {
                 width: 32px;
                 background-color: #2563eb !important;
-                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.75);
+                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.85);
             }
         </style>
 
         <div id="heroBannerCarousel" class="group relative shadow-xl">
             
-            <!-- 7 Background Slide Images -->
+            <!-- 7 Background Slide Images (Chuẩn Full HD sắc nét, tự nhiên 100%) -->
             <div class="absolute inset-0 w-full h-full overflow-hidden">
                 @foreach($bannerSlides as $idx => $slide)
                     <div class="hero-slide-item {{ $idx === 0 ? 'is-active' : '' }}" data-slide="{{ $idx }}">
                         <img src="{{ $slide['img'] }}" 
                              alt="{{ $slide['alt'] }}"
-                             width="1200" height="700"
+                             width="1920" height="800"
                              {{ $idx === 0 ? 'fetchpriority=high' : 'loading=lazy' }}>
                     </div>
                 @endforeach
             </div>
 
-            <!-- Soft Gradient Overlay on Left to make text pop -->
-            <div class="hero-gradient-overlay"></div>
-            
             <!-- Bottom Subtle Dark Gradient for Dots Indicator -->
             <div class="hero-bottom-shade"></div>
-
-            <!-- Content on Top of Background -->
-            <div class="relative z-20 max-w-xl py-8 sm:py-12 px-6 sm:px-10 text-white space-y-4">
-                <!-- Badge -->
-                <div class="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#e11b22]/90 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-sm border border-red-400/30">
-                    <span id="heroSlideBadge">{{ $bannerSlides[0]['badge'] }}</span>
-                </div>
-                
-                <!-- Title & Highlight -->
-                <h1 class="text-2xl sm:text-4xl lg:text-[44px] font-black uppercase tracking-tight leading-tight text-white drop-shadow-lg min-h-[2.5em] flex flex-col justify-center">
-                    <span id="heroSlideTitle">{{ $bannerSlides[0]['title'] }}</span>
-                    <span id="heroSlideHighlight" class="text-amber-400">{{ $bannerSlides[0]['highlight'] }}</span>
-                </h1>
-                
-                <!-- Description -->
-                <p id="heroSlideDesc" class="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-md min-h-[2.8em]">
-                    {{ $bannerSlides[0]['desc'] }}
-                </p>
-
-                <!-- Value Badges -->
-                <div class="flex flex-wrap items-center gap-2.5 pt-1">
-                    <div class="bg-amber-400 text-slate-900 font-black px-3.5 py-1.5 rounded-xl text-center shadow">
-                        <span class="text-[9px] block uppercase font-bold text-slate-800">TẶNG THÊM</span>
-                        <span class="text-xs sm:text-sm">THANH NHIỆT 500K</span>
-                    </div>
-                    <div class="bg-red-600 text-white font-black px-3.5 py-1.5 rounded-xl text-center shadow border border-red-400/40">
-                        <span class="text-[9px] block uppercase font-bold text-red-100">GIẢM GIÁ</span>
-                        <span class="text-xs sm:text-sm">30%++</span>
-                    </div>
-                    <div class="bg-slate-800/80 backdrop-blur-md text-white font-black px-3.5 py-1.5 rounded-xl text-center shadow border border-white/20">
-                        <span class="text-[9px] block uppercase font-bold text-slate-300">BẢO HÀNH</span>
-                        <span class="text-xs sm:text-sm">12 THÁNG</span>
-                    </div>
-                </div>
-
-                <!-- Call to Action Button -->
-                <div class="pt-2">
-                    <button type="button" 
-                            onclick="openQuoteModal('', 'Nhận ưu đãi giảm giá 30%')" 
-                            class="inline-block px-7 py-3 bg-[#e11b22] hover:bg-[#c6151c] text-white font-black text-xs sm:text-sm uppercase rounded-full shadow-xl transition-all hover:scale-105">
-                        Nhận Báo Giá Khuyến Mãi Ngay
-                    </button>
-                </div>
-            </div>
 
             <!-- Previous / Next Arrow Controls -->
             <button type="button" 
@@ -298,13 +239,8 @@
     <script>
         (function () {
             function initHeroBannerSlider() {
-                var slidesData = @json($bannerSlides);
                 var slides = document.querySelectorAll('.hero-slide-item');
                 var dots = document.querySelectorAll('.hero-dot-pill');
-                var badgeEl = document.getElementById('heroSlideBadge');
-                var titleEl = document.getElementById('heroSlideTitle');
-                var highlightEl = document.getElementById('heroSlideHighlight');
-                var descEl = document.getElementById('heroSlideDesc');
                 var prevBtn = document.getElementById('heroPrevBtn');
                 var nextBtn = document.getElementById('heroNextBtn');
                 var carousel = document.getElementById('heroBannerCarousel');
@@ -312,7 +248,7 @@
                 if (!slides.length) return;
 
                 var currentSlide = 0;
-                var totalSlides = slidesData.length;
+                var totalSlides = slides.length;
                 var autoTimer = null;
                 var SLIDE_DURATION = 7000; // ĐÚNG 7 GIÂY theo yêu cầu của bạn
 
@@ -338,13 +274,6 @@
                             dots[j].classList.remove('is-active');
                         }
                     }
-
-                    // Cập nhật nội dung tiêu đề & mô tả theo slide
-                    var d = slidesData[currentSlide];
-                    if (badgeEl) badgeEl.textContent = d.badge;
-                    if (titleEl) titleEl.textContent = d.title;
-                    if (highlightEl) highlightEl.textContent = d.highlight;
-                    if (descEl) descEl.textContent = d.desc;
                 }
 
                 function startAutoPlay() {
