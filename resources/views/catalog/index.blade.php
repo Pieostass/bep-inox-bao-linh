@@ -68,29 +68,159 @@
             ];
         @endphp
 
-        <div id="heroBannerCarousel" 
-             class="group relative overflow-hidden rounded-2xl shadow-xl min-h-[400px] sm:min-h-[440px] lg:min-h-[480px] flex items-center bg-slate-900 select-none">
+        <!-- Khung CSS Tự Chứa - Đảm bảo chạy 100% không phụ thuộc build Tailwind -->
+        <style>
+            #heroBannerCarousel {
+                position: relative;
+                overflow: hidden;
+                border-radius: 1rem;
+                min-height: 420px;
+                background-color: #0f172a;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+                user-select: none;
+                display: flex;
+                align-items: center;
+            }
+            @media (min-width: 640px) { #heroBannerCarousel { min-height: 460px; } }
+            @media (min-width: 1024px) { #heroBannerCarousel { min-height: 500px; } }
+
+            /* Danh sách ảnh slide chạy liên tục */
+            .hero-slide-item {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out;
+                z-index: 1;
+                pointer-events: none;
+            }
+            .hero-slide-item.is-active {
+                opacity: 1 !important;
+                visibility: visible !important;
+                z-index: 2;
+                pointer-events: auto;
+            }
+            .hero-slide-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 35%;
+                filter: brightness(1.04) contrast(1.05);
+                display: block;
+            }
+
+            /* Lớp phủ Gradient sáng, trong trẻo: chỉ phủ mờ nhẹ bên trái dưới chữ để đọc chữ rõ, nửa bên phải để trong suốt 100% cho ảnh sáng rõ */
+            .hero-gradient-overlay {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                z-index: 10;
+                background: linear-gradient(90deg, rgba(10, 15, 29, 0.94) 0%, rgba(10, 15, 29, 0.8) 35%, rgba(10, 15, 29, 0.25) 55%, rgba(10, 15, 29, 0) 70%);
+            }
+            @media (max-width: 640px) {
+                .hero-gradient-overlay {
+                    background: linear-gradient(180deg, rgba(10, 15, 29, 0.92) 0%, rgba(10, 15, 29, 0.75) 60%, rgba(10, 15, 29, 0.35) 100%);
+                }
+            }
+
+            /* Lớp phủ mờ đáy nhẹ cho chấm viên thuốc */
+            .hero-bottom-shade {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 48px;
+                pointer-events: none;
+                z-index: 10;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+            }
+
+            /* Nút mũi tên chuyển ảnh Next / Prev */
+            .hero-nav-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 30;
+                width: 44px;
+                height: 44px;
+                border-radius: 9999px;
+                background-color: rgba(15, 23, 42, 0.7);
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: all 0.2s ease;
+                outline: none;
+            }
+            .hero-nav-arrow:hover {
+                background-color: #e11b22;
+                border-color: #e11b22;
+                transform: translateY(-50%) scale(1.1);
+            }
+            .hero-nav-arrow:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+            .hero-nav-prev { left: 16px; }
+            .hero-nav-next { right: 16px; }
+
+            /* Chấm indicator dạng viên thuốc chuẩn theo mẫu của bạn */
+            .hero-dots-wrap {
+                position: absolute;
+                bottom: 16px;
+                inset-x: 0;
+                z-index: 30;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                pointer-events: auto;
+            }
+            .hero-dot-pill {
+                height: 8px;
+                width: 12px;
+                border-radius: 9999px;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                background-color: rgba(255, 255, 255, 0.5);
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                outline: none;
+            }
+            .hero-dot-pill:hover {
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+            .hero-dot-pill.is-active {
+                width: 32px;
+                background-color: #2563eb !important;
+                box-shadow: 0 2px 8px rgba(37, 99, 235, 0.75);
+            }
+        </style>
+
+        <div id="heroBannerCarousel" class="group relative shadow-xl">
             
             <!-- 7 Background Slide Images -->
-            <div class="absolute inset-0 w-full h-full">
+            <div class="absolute inset-0 w-full h-full overflow-hidden">
                 @foreach($bannerSlides as $idx => $slide)
-                    <div class="hero-slide-bg absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out {{ $idx === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10' }}"
-                         data-slide="{{ $idx }}">
+                    <div class="hero-slide-item {{ $idx === 0 ? 'is-active' : '' }}" data-slide="{{ $idx }}">
                         <img src="{{ $slide['img'] }}" 
                              alt="{{ $slide['alt'] }}"
                              width="1200" height="700"
-                             class="w-full h-full object-cover object-center sm:object-right"
                              {{ $idx === 0 ? 'fetchpriority=high' : 'loading=lazy' }}>
                     </div>
                 @endforeach
             </div>
 
             <!-- Soft Gradient Overlay on Left to make text pop -->
-            <div class="absolute inset-0 pointer-events-none z-10" 
-                 style="background: linear-gradient(to right, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.85) 45%, rgba(10, 15, 29, 0.35) 75%, rgba(10, 15, 29, 0.15) 100%);"></div>
+            <div class="hero-gradient-overlay"></div>
             
             <!-- Bottom Subtle Dark Gradient for Dots Indicator -->
-            <div class="absolute inset-x-0 bottom-0 h-20 pointer-events-none z-10 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <div class="hero-bottom-shade"></div>
 
             <!-- Content on Top of Background -->
             <div class="relative z-20 max-w-xl py-8 sm:py-12 px-6 sm:px-10 text-white space-y-4">
@@ -101,12 +231,12 @@
                 
                 <!-- Title & Highlight -->
                 <h1 class="text-2xl sm:text-4xl lg:text-[44px] font-black uppercase tracking-tight leading-tight text-white drop-shadow-lg min-h-[2.5em] flex flex-col justify-center">
-                    <span id="heroSlideTitle" class="transition-all duration-300">{{ $bannerSlides[0]['title'] }}</span>
-                    <span id="heroSlideHighlight" class="text-amber-400 transition-all duration-300">{{ $bannerSlides[0]['highlight'] }}</span>
+                    <span id="heroSlideTitle">{{ $bannerSlides[0]['title'] }}</span>
+                    <span id="heroSlideHighlight" class="text-amber-400">{{ $bannerSlides[0]['highlight'] }}</span>
                 </h1>
                 
                 <!-- Description -->
-                <p id="heroSlideDesc" class="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-md transition-all duration-300 min-h-[2.8em]">
+                <p id="heroSlideDesc" class="text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-md min-h-[2.8em]">
                     {{ $bannerSlides[0]['desc'] }}
                 </p>
 
@@ -140,23 +270,23 @@
             <button type="button" 
                     id="heroPrevBtn"
                     aria-label="Ảnh trước" 
-                    class="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-[#e11b22] text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/20 hover:scale-110">
+                    class="hero-nav-arrow hero-nav-prev">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
             </button>
             <button type="button" 
                     id="heroNextBtn"
                     aria-label="Ảnh kế tiếp" 
-                    class="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-[#e11b22] text-white flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm border border-white/20 hover:scale-110">
+                    class="hero-nav-arrow hero-nav-next">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             </button>
 
             <!-- Pill Dots Pagination (Chuẩn theo mẫu của bạn) -->
-            <div class="absolute bottom-4 inset-x-0 z-30 flex items-center justify-center gap-1.5 sm:gap-2">
+            <div class="hero-dots-wrap">
                 @foreach($bannerSlides as $idx => $slide)
                     <button type="button" 
-                            class="hero-dot-btn transition-all duration-300 {{ $idx === 0 ? 'w-7 sm:w-8 h-2 bg-[#2563eb] rounded-full shadow-md' : 'w-2.5 sm:w-3 h-2 bg-white/50 hover:bg-white/80 rounded-full cursor-pointer' }}"
+                            class="hero-dot-pill {{ $idx === 0 ? 'is-active' : '' }}"
                             data-dot="{{ $idx }}"
-                            aria-label="Chuyển tới slide {{ $idx + 1 }}">
+                            aria-label="Chuyển tới ảnh {{ $idx + 1 }}">
                     </button>
                 @endforeach
             </div>
@@ -166,136 +296,134 @@
 
     <!-- Script điều khiển Slider 7 ảnh -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const slidesData = @json($bannerSlides);
-            const slideBgs = document.querySelectorAll('.hero-slide-bg');
-            const dotBtns = document.querySelectorAll('.hero-dot-btn');
-            const badgeEl = document.getElementById('heroSlideBadge');
-            const titleEl = document.getElementById('heroSlideTitle');
-            const highlightEl = document.getElementById('heroSlideHighlight');
-            const descEl = document.getElementById('heroSlideDesc');
-            const container = document.getElementById('heroBannerCarousel');
-            const prevBtn = document.getElementById('heroPrevBtn');
-            const nextBtn = document.getElementById('heroNextBtn');
+        (function () {
+            function initHeroBannerSlider() {
+                var slidesData = @json($bannerSlides);
+                var slides = document.querySelectorAll('.hero-slide-item');
+                var dots = document.querySelectorAll('.hero-dot-pill');
+                var badgeEl = document.getElementById('heroSlideBadge');
+                var titleEl = document.getElementById('heroSlideTitle');
+                var highlightEl = document.getElementById('heroSlideHighlight');
+                var descEl = document.getElementById('heroSlideDesc');
+                var prevBtn = document.getElementById('heroPrevBtn');
+                var nextBtn = document.getElementById('heroNextBtn');
+                var carousel = document.getElementById('heroBannerCarousel');
 
-            let currentSlide = 0;
-            const totalSlides = slidesData.length;
-            let autoTimer = null;
+                if (!slides.length) return;
 
-            function goToSlide(index) {
-                if (index < 0) index = totalSlides - 1;
-                if (index >= totalSlides) index = 0;
-                currentSlide = index;
+                var currentSlide = 0;
+                var totalSlides = slidesData.length;
+                var autoTimer = null;
+                var SLIDE_DURATION = 7000; // ĐÚNG 7 GIÂY theo yêu cầu của bạn
 
-                // Update Background Images (smooth crossfade)
-                slideBgs.forEach((bg, idx) => {
-                    if (idx === currentSlide) {
-                        bg.classList.remove('opacity-0', '-z-10');
-                        bg.classList.add('opacity-100', 'z-0');
-                    } else {
-                        bg.classList.remove('opacity-100', 'z-0');
-                        bg.classList.add('opacity-0', '-z-10');
+                function goToSlide(index) {
+                    if (index < 0) index = totalSlides - 1;
+                    if (index >= totalSlides) index = 0;
+                    currentSlide = index;
+
+                    // Chuyển ảnh mượt mà
+                    for (var i = 0; i < slides.length; i++) {
+                        if (i === currentSlide) {
+                            slides[i].classList.add('is-active');
+                        } else {
+                            slides[i].classList.remove('is-active');
+                        }
                     }
-                });
 
-                // Update Pill Dots (active elongated blue pill, inactive compact gray pill)
-                dotBtns.forEach((dot, idx) => {
-                    if (idx === currentSlide) {
-                        dot.className = 'hero-dot-btn transition-all duration-300 w-7 sm:w-8 h-2 bg-[#2563eb] rounded-full shadow-md';
-                    } else {
-                        dot.className = 'hero-dot-btn transition-all duration-300 w-2.5 sm:w-3 h-2 bg-white/50 hover:bg-white/80 rounded-full cursor-pointer';
+                    // Cập nhật chấm chỉ số (active là viên thuốc xanh dài 32px, còn lại ngắn 12px)
+                    for (var j = 0; j < dots.length; j++) {
+                        if (j === currentSlide) {
+                            dots[j].classList.add('is-active');
+                        } else {
+                            dots[j].classList.remove('is-active');
+                        }
                     }
-                });
 
-                // Smooth Text Transition
-                const d = slidesData[currentSlide];
-                if (badgeEl) badgeEl.textContent = d.badge;
-                if (titleEl) {
-                    titleEl.style.opacity = '0';
-                    setTimeout(() => {
-                        titleEl.textContent = d.title;
-                        titleEl.style.opacity = '1';
-                    }, 150);
+                    // Cập nhật nội dung tiêu đề & mô tả theo slide
+                    var d = slidesData[currentSlide];
+                    if (badgeEl) badgeEl.textContent = d.badge;
+                    if (titleEl) titleEl.textContent = d.title;
+                    if (highlightEl) highlightEl.textContent = d.highlight;
+                    if (descEl) descEl.textContent = d.desc;
                 }
-                if (highlightEl) {
-                    highlightEl.style.opacity = '0';
-                    setTimeout(() => {
-                        highlightEl.textContent = d.highlight;
-                        highlightEl.style.opacity = '1';
-                    }, 150);
-                }
-                if (descEl) {
-                    descEl.style.opacity = '0';
-                    setTimeout(() => {
-                        descEl.textContent = d.desc;
-                        descEl.style.opacity = '1';
-                    }, 150);
-                }
-            }
 
-            function startAutoPlay() {
-                stopAutoPlay();
-                autoTimer = setInterval(() => {
-                    goToSlide(currentSlide + 1);
-                }, 4000);
-            }
-
-            function stopAutoPlay() {
-                if (autoTimer) {
-                    clearInterval(autoTimer);
-                    autoTimer = null;
-                }
-            }
-
-            // Dot Clicks
-            dotBtns.forEach((dot) => {
-                dot.addEventListener('click', function () {
-                    const target = parseInt(this.getAttribute('data-dot'), 10);
-                    goToSlide(target);
-                    startAutoPlay();
-                });
-            });
-
-            // Prev / Next Clicks
-            if (prevBtn) {
-                prevBtn.addEventListener('click', function () {
-                    goToSlide(currentSlide - 1);
-                    startAutoPlay();
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function () {
-                    goToSlide(currentSlide + 1);
-                    startAutoPlay();
-                });
-            }
-
-            // Pause on hover (desktop)
-            if (container) {
-                container.addEventListener('mouseenter', stopAutoPlay);
-                container.addEventListener('mouseleave', startAutoPlay);
-
-                // Touch swipe on mobile
-                let touchStartX = 0;
-                let touchEndX = 0;
-                container.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
+                function startAutoPlay() {
                     stopAutoPlay();
-                }, { passive: true });
-
-                container.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    if (touchStartX - touchEndX > 50) {
+                    autoTimer = setInterval(function () {
                         goToSlide(currentSlide + 1);
-                    } else if (touchEndX - touchStartX > 50) {
-                        goToSlide(currentSlide - 1);
+                    }, SLIDE_DURATION);
+                }
+
+                function stopAutoPlay() {
+                    if (autoTimer) {
+                        clearInterval(autoTimer);
+                        autoTimer = null;
                     }
+                }
+
+                function resetTimer() {
                     startAutoPlay();
-                }, { passive: true });
+                }
+
+                // Gán sự kiện click cho các chấm viên thuốc
+                dots.forEach(function (dot) {
+                    dot.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var target = parseInt(this.getAttribute('data-dot'), 10);
+                        goToSlide(target);
+                        resetTimer();
+                    });
+                });
+
+                // Nút chuyển ảnh Trước / Sau
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        goToSlide(currentSlide - 1);
+                        resetTimer();
+                    });
+                }
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        goToSlide(currentSlide + 1);
+                        resetTimer();
+                    });
+                }
+
+                // Vuốt ngón tay trên điện thoại / tablet
+                if (carousel) {
+                    var touchStartX = 0;
+                    var touchEndX = 0;
+                    carousel.addEventListener('touchstart', function (e) {
+                        touchStartX = e.changedTouches[0].screenX;
+                    }, { passive: true });
+
+                    carousel.addEventListener('touchend', function (e) {
+                        touchEndX = e.changedTouches[0].screenX;
+                        if (touchStartX - touchEndX > 50) {
+                            goToSlide(currentSlide + 1);
+                            resetTimer();
+                        } else if (touchEndX - touchStartX > 50) {
+                            goToSlide(currentSlide - 1);
+                            resetTimer();
+                        }
+                    }, { passive: true });
+                }
+
+                // Khởi động chạy tự động ngay lập tức
+                startAutoPlay();
             }
 
-            startAutoPlay();
-        });
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initHeroBannerSlider);
+            } else {
+                initHeroBannerSlider();
+            }
+        })();
     </script>
 
     <!-- 2. Category Grid (Khung danh mục viền đỏ 2 hàng chuẩn Newsun) -->
