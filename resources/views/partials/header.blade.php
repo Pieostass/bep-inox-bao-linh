@@ -13,7 +13,16 @@
             <a href="{{ route('catalog.index') }}" class="flex items-center shrink-0 min-w-0 group" aria-label="Bếp Inox Bảo Linh - Trang chủ">
                 <img src="{{ asset('images/logo-horizontal.png') }}" 
                      alt="Bếp Inox Bảo Linh" 
-                     class="h-10 sm:h-12 md:h-13 w-auto object-contain transition-transform group-hover:scale-105 duration-200">
+                     class="h-10 sm:h-12 md:h-13 w-auto object-contain transition-transform group-hover:scale-105 duration-200"
+                     onerror="this.style.display='none'; document.getElementById('headerLogoFallback').style.display='flex';">
+                <div id="headerLogoFallback" class="hidden flex-col">
+                    <span class="text-2xl sm:text-3xl font-black text-[#e11b22] tracking-tighter leading-none italic uppercase">
+                        BẢO LINH
+                    </span>
+                    <span class="text-[8px] min-[380px]:text-[9px] sm:text-[10px] font-bold text-slate-600 tracking-wider uppercase mt-0.5 whitespace-nowrap">
+                        CHUYÊN GIA THIẾT BỊ BẾP CÔNG NGHIỆP
+                    </span>
+                </div>
             </a>
 
             <!-- Red "Danh mục" Button -->

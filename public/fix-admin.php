@@ -100,6 +100,34 @@ if (is_link($linkStorage)) {
     }
 }
 
+// 3.5 Đồng bộ logo và favicon từ thư mục app sang public_html
+$sourceImagesDir = $appDir . '/public/images';
+$targetImagesDir = __DIR__ . '/images';
+if (!is_dir($targetImagesDir)) {
+    @mkdir($targetImagesDir, 0755, true);
+}
+if (is_dir($sourceImagesDir)) {
+    $imgFiles = scandir($sourceImagesDir);
+    $copied = 0;
+    foreach ($imgFiles as $img) {
+        if ($img === '.' || $img === '..') continue;
+        $srcFile = $sourceImagesDir . '/' . $img;
+        $dstFile = $targetImagesDir . '/' . $img;
+        if (!file_exists($dstFile) || filemtime($srcFile) > filemtime($dstFile)) {
+            if (@copy($srcFile, $dstFile)) $copied++;
+        }
+    }
+    if ($copied > 0) {
+        $results[] = ["status" => "success", "msg" => "Đã tự động đồng bộ $copied file ảnh (logo, favicon) vào public_html/images/."];
+    }
+}
+$favSrc = $appDir . '/public/favicon.ico';
+$favDst = __DIR__ . '/favicon.ico';
+if (file_exists($favSrc) && (!file_exists($favDst) || filemtime($favSrc) > filemtime($favDst))) {
+    @copy($favSrc, $favDst);
+    $results[] = ["status" => "success", "msg" => "Đã đồng bộ favicon.ico vào public_html/."];
+}
+
 // 4. Kiểm tra các PHP Extensions cần thiết cho Livewire Upload
 $extensions = [
     'fileinfo' => 'Bắt buộc cho Livewire / Filament kiểm tra định dạng ảnh khi upload',
